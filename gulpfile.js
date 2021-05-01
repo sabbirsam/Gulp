@@ -8,17 +8,17 @@ var sourcemaps = require( 'gulp-sourcemaps'); //identify source file on inspect
 // var cli = require('gulp-cli');
 
 
-var  styleSRC = './src/scss/style.scss';  //source file where i write the code of scss
+var  styleSRC = 'src/scss/style.scss';  //source file where i write the code of scss
 var  styleDIST = './dist/css/';  //here is the added css automatically
 
-var styleWatch = './src/scss/**/*.scss'; //** means every file then/*.scss mean every folder and scss file
+var styleWatch = 'src/scss/**/*.scss'; //** means every file then/*.scss mean every folder and scss file
 
-var  jsSRC = './src/js/script.js';  //source file where i write the code of scss
+var  jsSRC = 'src/js/script.js';  //source file where i write the code of scss
 var  jsDIST = './dist/js/';  //here is the added css automatically
 
-var jWatch = './src/js/**/*.js';
+var jsWatch = 'src/js/**/*.js';
 
-gulp.task('style', function(){
+gulp.task('style', async function(){
     gulp.src( styleSRC )  //set the source file
         .pipe(sourcemaps.init())
         .pipe( sass({
@@ -38,51 +38,38 @@ gulp.task('style', function(){
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest( styleDIST ));
 });
-//5 no vieo auto prefexier and soruce mapping
 
 
-gulp.task('js', function (){
+
+gulp.task('js', async function (){
     gulp.src( jsSRC )
         .pipe( gulp.dest( jsDIST ));
 });
 
 
 
-gulp.task('default',gulp.series(['style', 'js']))
+gulp.task('default',gulp.series(['style', 'js']));
 
 
-gulp.task('watch', gulp.series(['default']), function () {
-    gulp.watch(styleWatch , ["style"]);
-    gulp.watch(jWatch,["js"]);
+
+gulp.task('watch', gulp.series(['default']),async function () {
+    gulp.watch(styleWatch , ['style']);
+    gulp.watch(jsWatch,['js']);
+    
+    
 });
 
 
 
-// --------------------------or
-// gulp.task('watch', function() {
-//     gulp.watch(styleWatch, gulp.series('style'));
-//     gulp.watch(scriptWatch, gulp.series('script'));
+
+// ^c = ctrl + c to stop terminal
+
+
+
+// gulp.task('watch',['default'], async function() {
+//     gulp.watch(styleWatch, ['style']);    
+//     gulp.watch(jsWatch, ['js']);
 // })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
