@@ -49,17 +49,20 @@ gulp.task('js', function (){
 
 
 
-gulp.task('build', ['js', 'style'], function () {
-    console.log("Build Success");
-});
+// gulp.task('build', ['js', 'style'], function () {
+//     console.log("Build Success");
+// });
 
 
-gulp.task('default',['style','js']);
+// gulp.task('default',['style','js']);
 
-gulp.task('watch', ['default', 'build'], function () {
-    gulp.watch(styleWatch , ["style"]);
-    gulp.watch(jWatch,["js"]);
-});
+// gulp.task('watch', ['default', 'build'], function () {
+//     gulp.watch(styleWatch , ["style"]);
+//     gulp.watch(jWatch,["js"]);
+// });
+
+
+
 
 // gulp.task('watch', gulp.series(style, js), function () {
 //     gulp.watch(styleWatch , ["style"]);
