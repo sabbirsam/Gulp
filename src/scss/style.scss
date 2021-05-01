@@ -1,10 +1,13 @@
 @import "base/variable";
+@import "base/grid";  //add here to add it on min.css newly scss files
 
 body{
     background: $bg;
     color: $col;
     border: 1px solid yellowgreen;
     font-family: sans-serif;
+    font-weight: 100;
+    line-height: 1px;
 
 }
 
