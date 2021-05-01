@@ -48,29 +48,23 @@ gulp.task('js', async function (){
 
 
 
-gulp.task('default',gulp.series(['style', 'js']));
 
 
 
-gulp.task('watch', gulp.series(['default']),async function () {
-    gulp.watch(styleWatch , ['style']);
-    gulp.watch(jsWatch,['js']);
-    
-    
+
+
+
+
+gulp.task( 'watch', function( ){
+    gulp.watch( styleWatch, gulp.series('style') );
+    gulp.watch( jsWatch, gulp.series('js') );
 });
+
+gulp.task( 'default', gulp.series( ['style', 'js', 'watch'] ) );
+
 
 
 
 
 // ^c = ctrl + c to stop terminal
-
-
-
-// gulp.task('watch',['default'], async function() {
-//     gulp.watch(styleWatch, ['style']);    
-//     gulp.watch(jsWatch, ['js']);
-// })
-
-
-
 
